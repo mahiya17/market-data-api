@@ -14,6 +14,23 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/privacy")
+async def privacy_policy():
+    """Privacy Policy endpoint"""
+    return {
+        "privacy_policy": {
+            "last_updated": "2024-02-09",
+            "policy": [
+                "This API provides public market data with no personal data collection.",
+                "No personal information is collected, stored, or processed.",
+                "Only publicly available stock market data is served.",
+                "This service does not use cookies or tracking mechanisms.",
+                "All data provided is for informational purposes only."
+            ],
+            "contact": "For questions about this privacy policy, please create an issue on the project repository."
+        }
+    }
+
 @app.get("/")
 async def root():
     """Health check endpoint"""
